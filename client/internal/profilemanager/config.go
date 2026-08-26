@@ -30,12 +30,12 @@ const (
 	// It is used for backward compatibility now.
 	// NB: hardcoded from github.com/netbirdio/netbird/management/cmd to avoid import
 	managementLegacyPortString = "33073"
-	// DefaultManagementURL points to the NetBird's cloud management endpoint
-	DefaultManagementURL = "https://api.netbird.io:443"
+	// DefaultManagementURL points to Theorem's self-hosted mesh control plane.
+	DefaultManagementURL = "https://mesh.theorem.sa:443"
 	// oldDefaultManagementURL points to the NetBird's old cloud management endpoint
 	oldDefaultManagementURL = "https://api.wiretrustee.com:443"
-	// DefaultAdminURL points to NetBird's cloud management console
-	DefaultAdminURL = "https://app.netbird.io:443"
+	// DefaultAdminURL is the public Theorem product home; users do not need a mesh dashboard.
+	DefaultAdminURL = "https://theorem.sa:443"
 )
 
 var DefaultInterfaceBlacklist = []string{
@@ -620,10 +620,14 @@ func UpdateOldManagementURL(ctx context.Context, config *Config, configPath stri
 	if err != nil {
 		return nil, err
 	}
+	// Theorem Mesh has its own state directory and control plane. Never migrate
+	// a profile that explicitly belongs to NetBird's legacy hosted service.
+	if config.ManagementURL.Hostname() == parsedOldDefaultManagementURL.Hostname() {
+		return config, nil
+	}
 
-	if config.ManagementURL.Hostname() != defaultManagementURL.Hostname() &&
-		config.ManagementURL.Hostname() != parsedOldDefaultManagementURL.Hostname() {
-		// only do the check for the NetBird's managed version
+	if config.ManagementURL.Hostname() != defaultManagementURL.Hostname() {
+		// Only check this product's managed endpoint.
 		return config, nil
 	}
 

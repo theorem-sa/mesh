@@ -41,7 +41,7 @@ func TestInitCommands(t *testing.T) {
 
 func TestSetFlagsFromEnvVars(t *testing.T) {
 	var cmd = &cobra.Command{
-		Use:          "netbird",
+		Use:          "theorem-mesh",
 		Long:         "test",
 		SilenceUsage: true,
 		Run: func(cmd *cobra.Command, args []string) {
@@ -61,7 +61,7 @@ func TestSetFlagsFromEnvVars(t *testing.T) {
 	t.Setenv("NB_WIREGUARD_PORT", "10000")
 	err := cmd.Execute()
 	if err != nil {
-		t.Fatalf("expected no error while running netbird command, got %v", err)
+		t.Fatalf("expected no error while running theorem-mesh command, got %v", err)
 	}
 	if len(natExternalIPs) != 2 {
 		t.Errorf("expected 2 external ips, got %d", len(natExternalIPs))

@@ -53,7 +53,7 @@ var (
 
 	upCmd = &cobra.Command{
 		Use:   "up",
-		Short: "install, login and start Netbird client",
+		Short: "sign in and connect Theorem Mesh",
 		RunE:  upFunc,
 	}
 )
@@ -79,7 +79,7 @@ func init() {
 
 	upCmd.PersistentFlags().BoolVar(&noBrowser, noBrowserFlag, false, noBrowserDesc)
 	upCmd.PersistentFlags().StringVar(&profileName, profileNameFlag, "", profileNameDesc)
-	upCmd.PersistentFlags().StringVarP(&configPath, "config", "c", "", "(DEPRECATED) Netbird config file location")
+	upCmd.PersistentFlags().StringVarP(&configPath, "config", "c", "", "(DEPRECATED) Theorem Mesh config file location")
 
 }
 
@@ -206,7 +206,7 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
 	if err != nil {
 		return fmt.Errorf("failed to connect to daemon error: %v\n"+
 			"If the daemon is not running please run: "+
-			"\nnetbird service install \nnetbird service start\n", err)
+			"\ntheorem-mesh service install \ntheorem-mesh service start\n", err)
 	}
 	defer func() {
 		err := conn.Close()

@@ -9,14 +9,14 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: #f7f8f9;
+            background: #f3f2ed;
             font-family: sans-serif, Arial, Tahoma;
         }
 
         .container {
             width: 100%;
-            background: white;
-            border: 1px solid #e8e9ea;
+            background: #f3f2ed;
+            border: 1px solid #c8cac4;
             text-align: center;
             padding: 20px;
             padding-bottom: 50px;
@@ -32,13 +32,14 @@
             align-items: center;
         }
 
-        .logo img {
-            width: 130px;
+        .logo svg {
+            width: 54px;
+            color: #111411;
         }
 
         .content {
             font-size: 13px;
-            color: #525252;
+            color: #5c615d;
             line-height: 18px;
             padding: 10px 0;
         }
@@ -47,15 +48,17 @@
             font-size: 18px;
             line-height: normal;
             margin-bottom: 5px;
-            color: black;
+            color: #111411;
         }
     </style>
-    <title>NetBird Login Successful</title>
+    <title>Theorem Mesh sign-in</title>
 </head>
 <body>
 <div class="container">
     <div class="logo">
-        <img alt="netbird_logo" src="https://img.mailinblue.com/6211297/images/content_library/original/64bd4ce82e1ea753e439b6a2.png">
+        <svg aria-label="Theorem" role="img" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M551 461Q562 447 562 423.5Q562 400 548 383H389Q439 369 473.5 328Q508 287 508 238Q508 139 443 65Q378-9 276-9Q174-9 107 53Q42 115 42 226.5Q42 338 125 399.5Q208 461 326 461ZM416 261Q416 300 400 336Q381 388 349 388Q124 388 124 193Q124 132 155 78.5Q186 25 244 25Q321 25 372 107Q416 178 416 261Z" transform="translate(10.17 48.34) scale(0.0723 -0.0723)"/>
+        </svg>
     </div>
     <br>
     {{ if .Error }}
@@ -65,7 +68,7 @@
     </svg>
     <div class="content">
         <div>
-            Login failed
+            Sign-in failed
         </div>
         {{ .Error }}.
     </div>
@@ -76,9 +79,9 @@
     </svg>
     <div class="content">
         <div>
-            Login successful
+            Sign-in successful
         </div>
-        Your device is now registered and logged in to NetBird.
+        Your device is now connected to Theorem Mesh.
         <br>
         You can now close this window.
     </div>

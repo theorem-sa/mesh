@@ -1056,7 +1056,7 @@ func toProtoFullStatus(fullStatus peer.FullStatus) *proto.FullStatus {
 // sendTerminalNotification sends a terminal notification message
 // to inform the user that the NetBird connection session has expired.
 func sendTerminalNotification() error {
-	message := "NetBird connection session expired\n\nPlease re-authenticate to connect to the network."
+	message := "Theorem Mesh session expired\n\nPlease sign in again to connect to the network."
 	echoCmd := exec.Command("echo", message)
 	wallCmd := exec.Command("sudo", "wall")
 

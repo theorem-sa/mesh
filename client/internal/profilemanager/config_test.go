@@ -149,14 +149,16 @@ func TestUpdateOldManagementURL(t *testing.T) {
 		fileShouldNotChange   bool
 	}{
 		{
-			name:                  "Update old management URL with legacy port",
+			name:                  "Do not migrate NetBird legacy port",
 			previousManagementURL: "https://api.wiretrustee.com:33073",
-			expectedManagementURL: DefaultManagementURL,
+			expectedManagementURL: "https://api.wiretrustee.com:33073",
+			fileShouldNotChange:   true,
 		},
 		{
-			name:                  "Update old management URL",
+			name:                  "Do not migrate NetBird legacy cloud",
 			previousManagementURL: oldDefaultManagementURL,
-			expectedManagementURL: DefaultManagementURL,
+			expectedManagementURL: oldDefaultManagementURL,
+			fileShouldNotChange:   true,
 		},
 		{
 			name:                  "No update needed when management URL is up to date",

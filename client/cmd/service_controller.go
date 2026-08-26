@@ -131,7 +131,7 @@ func setupServiceControlCommand(cmd *cobra.Command, ctx context.Context, cancel 
 
 var runCmd = &cobra.Command{
 	Use:   "run",
-	Short: "runs Netbird as service",
+	Short: "runs Theorem Mesh as a service",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx, cancel := context.WithCancel(cmd.Context())
 
@@ -149,7 +149,7 @@ var runCmd = &cobra.Command{
 
 var startCmd = &cobra.Command{
 	Use:   "start",
-	Short: "starts Netbird service",
+	Short: "starts Theorem Mesh service",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx, cancel := context.WithCancel(cmd.Context())
 		s, err := setupServiceControlCommand(cmd, ctx, cancel)
@@ -160,14 +160,14 @@ var startCmd = &cobra.Command{
 		if err := s.Start(); err != nil {
 			return fmt.Errorf("start service: %w", err)
 		}
-		cmd.Println("Netbird service has been started")
+		cmd.Println("Theorem Mesh service has been started")
 		return nil
 	},
 }
 
 var stopCmd = &cobra.Command{
 	Use:   "stop",
-	Short: "stops Netbird service",
+	Short: "stops Theorem Mesh service",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx, cancel := context.WithCancel(cmd.Context())
 		s, err := setupServiceControlCommand(cmd, ctx, cancel)
@@ -178,14 +178,14 @@ var stopCmd = &cobra.Command{
 		if err := s.Stop(); err != nil {
 			return fmt.Errorf("stop service: %w", err)
 		}
-		cmd.Println("Netbird service has been stopped")
+		cmd.Println("Theorem Mesh service has been stopped")
 		return nil
 	},
 }
 
 var restartCmd = &cobra.Command{
 	Use:   "restart",
-	Short: "restarts Netbird service",
+	Short: "restarts Theorem Mesh service",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx, cancel := context.WithCancel(cmd.Context())
 		s, err := setupServiceControlCommand(cmd, ctx, cancel)
@@ -196,14 +196,14 @@ var restartCmd = &cobra.Command{
 		if err := s.Restart(); err != nil {
 			return fmt.Errorf("restart service: %w", err)
 		}
-		cmd.Println("Netbird service has been restarted")
+		cmd.Println("Theorem Mesh service has been restarted")
 		return nil
 	},
 }
 
 var svcStatusCmd = &cobra.Command{
 	Use:   "status",
-	Short: "shows Netbird service status",
+	Short: "shows Theorem Mesh service status",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx, cancel := context.WithCancel(cmd.Context())
 		s, err := setupServiceControlCommand(cmd, ctx, cancel)
@@ -228,7 +228,7 @@ var svcStatusCmd = &cobra.Command{
 			statusText = fmt.Sprintf("Unknown (%d)", status)
 		}
 
-		cmd.Printf("Netbird service status: %s\n", statusText)
+		cmd.Printf("Theorem Mesh service status: %s\n", statusText)
 		return nil
 	},
 }

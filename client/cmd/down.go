@@ -14,7 +14,7 @@ import (
 
 var downCmd = &cobra.Command{
 	Use:   "down",
-	Short: "down netbird connections",
+	Short: "disconnect Theorem Mesh",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		SetFlagsFromEnvVars(rootCmd)
 

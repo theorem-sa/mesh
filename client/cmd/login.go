@@ -26,12 +26,12 @@ import (
 func init() {
 	loginCmd.PersistentFlags().BoolVar(&noBrowser, noBrowserFlag, false, noBrowserDesc)
 	loginCmd.PersistentFlags().StringVar(&profileName, profileNameFlag, "", profileNameDesc)
-	loginCmd.PersistentFlags().StringVarP(&configPath, "config", "c", "", "(DEPRECATED) Netbird config file location")
+	loginCmd.PersistentFlags().StringVarP(&configPath, "config", "c", "", "(DEPRECATED) Theorem Mesh config file location")
 }
 
 var loginCmd = &cobra.Command{
 	Use:   "login",
-	Short: "login to the Netbird Management Service (first run)",
+	Short: "sign in to Theorem Mesh (first run)",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := setEnvAndFlags(cmd); err != nil {
 			return fmt.Errorf("set env and flags: %v", err)
@@ -83,7 +83,7 @@ func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey str
 	if err != nil {
 		return fmt.Errorf("failed to connect to daemon error: %v\n"+
 			"If the daemon is not running please run: "+
-			"\nnetbird service install \nnetbird service start\n", err)
+			"\ntheorem-mesh service install \ntheorem-mesh service start\n", err)
 	}
 	defer conn.Close()
 
@@ -156,7 +156,7 @@ func getActiveProfile(ctx context.Context, pm *profilemanager.ProfileManager, pr
 	}
 
 	if activeProf == nil {
-		return nil, fmt.Errorf("active profile not found, please run 'netbird profile create' first")
+		return nil, fmt.Errorf("active profile not found, please run 'theorem-mesh profile create' first")
 	}
 	return activeProf, nil
 }
@@ -201,7 +201,7 @@ func switchProfile(ctx context.Context, profileName string, username string) err
 	if err != nil {
 		return fmt.Errorf("failed to connect to daemon error: %v\n"+
 			"If the daemon is not running please run: "+
-			"\nnetbird service install \nnetbird service start\n", err)
+			"\ntheorem-mesh service install \ntheorem-mesh service start\n", err)
 	}
 	defer conn.Close()
 
@@ -357,7 +357,7 @@ func openURL(cmd *cobra.Command, verificationURIComplete, userCode string, noBro
 	if !noBrowser {
 		if err := open.Run(verificationURIComplete); err != nil {
 			cmd.Println("\nAlternatively, you may want to use a setup key, see:\n\n" +
-				"https://docs.netbird.io/how-to/register-machines-using-setup-keys")
+				"https://theorem.sa")
 		}
 	}
 }

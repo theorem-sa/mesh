@@ -17,8 +17,10 @@ func TestUpDaemon(t *testing.T) {
 
 	tempDir := t.TempDir()
 	origDefaultProfileDir := profilemanager.DefaultConfigPathDir
+	origDefaultProfilePath := profilemanager.DefaultConfigPath
 	origActiveProfileStatePath := profilemanager.ActiveProfileStatePath
 	profilemanager.DefaultConfigPathDir = tempDir
+	profilemanager.DefaultConfigPath = tempDir + "/default.json"
 	profilemanager.ActiveProfileStatePath = tempDir + "/active_profile.json"
 	profilemanager.ConfigDirOverride = tempDir
 
@@ -46,6 +48,7 @@ func TestUpDaemon(t *testing.T) {
 
 	t.Cleanup(func() {
 		profilemanager.DefaultConfigPathDir = origDefaultProfileDir
+		profilemanager.DefaultConfigPath = origDefaultProfilePath
 		profilemanager.ActiveProfileStatePath = origActiveProfileStatePath
 		profilemanager.ConfigDirOverride = ""
 	})

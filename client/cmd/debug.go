@@ -38,7 +38,7 @@ var debugCmd = &cobra.Command{
 
 var debugBundleCmd = &cobra.Command{
 	Use:     "bundle",
-	Example: "  netbird debug bundle",
+	Example: "  theorem-mesh debug bundle",
 	Short:   "Create a debug bundle",
 	Long:    "Generates a compressed archive of the daemon's logs and status for debugging purposes.",
 	RunE:    debugBundle,
@@ -70,7 +70,7 @@ var forCmd = &cobra.Command{
 	Use:     "for <time>",
 	Short:   "Run debug logs for a specified duration and create a debug bundle",
 	Long:    `Sets the logging level to trace, runs for the specified duration, and then generates a debug bundle.`,
-	Example: "  netbird debug for 5m",
+	Example: "  theorem-mesh debug for 5m",
 	Args:    cobra.ExactArgs(1),
 	RunE:    runForDuration,
 }
@@ -79,7 +79,7 @@ var persistenceCmd = &cobra.Command{
 	Use:     "persistence [on|off]",
 	Short:   "Set network map memory persistence",
 	Long:    `Configure whether the latest network map should persist in memory. When enabled, the last known network map will be kept in memory.`,
-	Example: "  netbird debug persistence on",
+	Example: "  theorem-mesh debug persistence on",
 	Args:    cobra.ExactArgs(1),
 	RunE:    setNetworkMapPersistence,
 }

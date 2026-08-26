@@ -414,7 +414,7 @@ func ParseGeneralSummary(overview OutputOverview, showURL bool, showRelays bool,
 			"Relays: %s\n"+
 			"Nameservers: %s\n"+
 			"FQDN: %s\n"+
-			"NetBird IP: %s\n"+
+			"Mesh IP: %s\n"+
 			"Interface type: %s\n"+
 			"Quantum resistance: %s\n"+
 			"Lazy connection: %s\n"+
@@ -510,7 +510,7 @@ func parsePeers(peers PeersStateOutput, rosenpassEnabled, rosenpassPermissive bo
 
 		peerString := fmt.Sprintf(
 			"\n %s:\n"+
-				"  NetBird IP: %s\n"+
+				"  Mesh IP: %s\n"+
 				"  Public key: %s\n"+
 				"  Status: %s\n"+
 				"  -- detail --\n"+

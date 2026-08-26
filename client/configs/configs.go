@@ -15,10 +15,10 @@ func init() {
 	}
 	switch runtime.GOOS {
 	case "windows":
-		StateDir = filepath.Join(os.Getenv("PROGRAMDATA"), "Netbird")
+		StateDir = filepath.Join(os.Getenv("PROGRAMDATA"), "Theorem Mesh")
 	case "darwin", "linux":
-		StateDir = "/var/lib/netbird"
+		StateDir = "/var/lib/theorem-mesh"
 	case "freebsd", "openbsd", "netbsd", "dragonfly":
-		StateDir = "/var/db/netbird"
+		StateDir = "/var/db/theorem-mesh"
 	}
 }
