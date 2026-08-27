@@ -32,6 +32,16 @@ sudo theorem-mesh up --setup-key <key>
 The default service is `theorem-mesh`. Product state is stored separately from
 an existing NetBird installation.
 
+## Install with npm
+
+The npm installer downloads and verifies the correct release binary for macOS,
+Linux, or Windows:
+
+```sh
+npm install --global @theorem-sa/mesh
+theorem-mesh version
+```
+
 ## Scope
 
 The first release is the cross-platform peer agent. The management, signal,
