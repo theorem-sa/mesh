@@ -29,26 +29,13 @@ builds:
         -X main.builtBy=theorem-sa
     mod_timestamp: "{{ .CommitTimestamp }}"
 
-universal_binaries:
-  - id: theorem-mesh-universal
-    ids:
-      - theorem-mesh
-    name_template: theorem-mesh
-    replace: true
-
 archives:
   - id: theorem-mesh
-    ids:
+    builds:
       - theorem-mesh
-      - theorem-mesh-universal
     name_template: >-
       {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
-    formats:
-      - tar.gz
-    format_overrides:
-      - goos: windows
-        formats:
-          - zip
+    format: tar.gz
 
 checksum:
   name_template: checksums.txt
@@ -60,4 +47,4 @@ release:
   github:
     owner: theorem-sa
     name: mesh
-  draft: true
+  draft: false
